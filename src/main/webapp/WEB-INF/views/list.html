@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+<a href="/book/create">Create Book</a>
+<h1>Book</h1>
+<!--<div>-->
+<!--    <a th:href="@{'/practice'(page=${practices.number - 1})}" th:if="${practices.hasPrevious()}">Previous</a>-->
+<!--    <span th:text="${practices.number + 1}"></span>/<span th:text="${practices.totalPages}"></span>-->
+<!--    <a th:href="@{'/practice'(page=${practices.number + 1})}" th:if="${practices.hasNext()}">Next</a>-->
+<!--</div>-->
+<!--<form>/-->
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Author</th>
+        <th>Category</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <th:block th:each="book : ${books}">
+        <tr>
+            <td th:text="${book.name}"></td>
+            <td th:text="${book.author}"></td>
+            <td th:text="${book.category.name}"></td>
+            <td><a th:href="@{/book/edit/__${book.id}__}">Edit</a></td>
+            <td><a th:href="@{/book/delete/__${book.id}__}">delete</a></td>
+        </tr>
+
+    </th:block>
+    </tbody>
+</table>
+</body>
+</html>
